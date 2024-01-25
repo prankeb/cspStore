@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "name": "Math",
+        "price": "60.00",
+        "description": "Learn Math Fast"
+    },
+    {
+        "id": 2,
+        "name": "English",
+        "price": "54.00",
+        "description": "Learn how to write well"
+    },
+    {
+        "id": 3,
+        "name": "History of the World",
+        "price": "35.00",
+        "description": "History of the world"
+    },
+    {
+        "id": 4,
+        "name": "Science",
+        "price": "60.00",
+        "description": "Science Textbook"
+    },
+
+    {
+        "id": 5,
+        "name": "Python",
+        "price": "60.00",
+        "description": "Python Textbook"
+    },
+
+    {
+        "id": 6,
+        "name": "Database",
+        "price": "60.00",
+        "description": "Database Textbook"
+    }
+]

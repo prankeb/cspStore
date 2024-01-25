@@ -1,25 +1,24 @@
-
 body {
   margin: 0;
   padding: 0;
-  background-color: #333; 
-  color: #fff; 
-  font-family: Arial, sans-serif; 
+  background-color: #333;
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  height: 100vh; 
+  height: 100vh;
 }
 
-.loginTitle {
+h2 {
   text-align: center;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .Header {
-  background-color: gold; 
+  background-color: gold;
   padding: 10px;
   width: 100%;
 }
@@ -27,7 +26,6 @@ body {
 .Title {
   color: rgb(74, 74, 255);
 }
-
 
 .LoginForm {
   width: 300px;
@@ -38,7 +36,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
 }
 
 label {
@@ -54,10 +51,111 @@ input {
 }
 
 button {
-  background-color: gold; 
-  color: #333; 
+  background-color: gold;
+  color: #333;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.StoreImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.StoreImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* StorePage Container */
+.StorePage {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.StoreContent {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+/* StoreImage Styles */
+.StoreImage {
+  display: block;
+  margin: 0 auto;
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* StoreTitle Styles */
+.StoreTitle {
+  color: #fff;
+  text-align: center; /* Center the text */
+}
+
+
+/* BookList Container */
+.bookList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex: 1;
+  flex-direction: row;
+  
+}
+
+/* BookItem Styles */
+.BookItem {
+  background-color: grey;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
+  width: calc(33.33% - 10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  color: black;
+}
+
+
+.BookItem:hover {
+  transform: scale(1.05);
+}
+
+/* BookItem Content Styles */
+.BookItem h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.BookItem p {
+  margin: 8px 0;
+}
+
+/* Selected Book Styles */
+.selectedbook {
+  background-color: rgb(74, 74, 255); /* Yellow background color for selected book */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin-left: 20px; /* Adjust the margin to create a sidebar effect */
+}
+
+.selectedbook h3 {
+  font-size: 1.5em;
+  margin-bottom: 12px;
+}
+
+.selectedbook p {
+  margin-bottom: 8px;
+  width: 100%;
 }

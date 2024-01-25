@@ -1,65 +1,43 @@
+import React, { useState } from 'react';
 import './App.css';
-//Imports the Header page
-import Header from './Header.js';
+import Header from './Header';
+import LoginPage from './LoginPage';
+import StorePage from './StorePage';
 
-//Component for the login page
-function App() {
-  return (
-    //Wraped in a div element
-    //Includes Header and then contains login form component 
-    <div className="App">
-      <Header />
-      <LoginTitle />
-      <LoginForm />
-    </div>
-  );
+
+//the main Component displays the header and then the main page
+function App(){
+    return (
+        <div className='App'>
+            <Header />
+            <MainPage />
+        </div>
+    )
 }
 
-//Component for title of the page
-function LoginTitle() {
-  return (
-    <h2 className='loginTitle'>Login</h2>
-  )
-}
 
-//component that contains the login form. It uses child components for elements of the form 
-function LoginForm(){
-  return (
-    <form className='LoginForm'>
-      <UserName />
-      <Password />
-      <Button />
-    </form>
-  )
-}
+//main page component displays LoginPage if user is signed out
+//Otherwise displays the main store page
+function MainPage(){
+    //User is started logged out
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-//Component for user name input
-function UserName(){
-  return (
-    <label>
-      Username: 
-      <input type='text'  name='Username' />
-      <br />
-    </label>
-  )
-}
+    //User is logged in once they click the button
+    const handleLoginSubmit = () => {
+        setIsLoggedIn(true);
+      };
+    
+      //Returns store page if logged in 
+    return (
+        <div>
+            {isLoggedIn ? (
+                <StorePage />
+            ) : (
+                <LoginPage onLoginSubmit={handleLoginSubmit} />
+            )}
+        </div>
 
-//Component for Password input
-function Password(){
-  return (
-    <label>
-      Password:
-      <input type='password' name='password' />
-      <br />
-    </label>
-  )
-}
-
-//Component for Submit button input
-function Button() {
-  return(
-    <button type='submit'>Login</button>
-  )
+    )
 }
 
 export default App;
