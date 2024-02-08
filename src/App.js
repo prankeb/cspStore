@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from './Header';
 import LoginPage from './LoginPage';
-import StorePage from './StorePage';
+import Products from './StorePage';
 
 
 //the main Component displays the header and then the main page
@@ -31,7 +31,7 @@ function MainPage(){
     return (
         <div>
             {isLoggedIn ? (
-                <StorePage />
+                <Products />
             ) : (
                 <LoginPage onLoginSubmit={handleLoginSubmit} />
             )}

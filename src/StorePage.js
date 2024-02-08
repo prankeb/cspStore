@@ -1,11 +1,15 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import Cart from './Cart';
 
-//Main function is store page
-export default function StorePage(){
+//Main function is for displaying products
+export default function Products(){
     const [books, setBooks] = useState([]);
     //Selected book starts out null
     const [selectedBook, setSelectedBook] = useState(null);
+    //Variables for the cart as a list and the usestate for showing the cart page
+    const [cart, setCart] = useState([]);
+    const [showCart, setShowCart] = useState(false);
 
     //Fetches the json file with book data
     //uses the data to use as book info
@@ -22,6 +26,40 @@ export default function StorePage(){
         setSelectedBook(book);
     };
 
+    //adds book to cart and includes books that were already in the cart
+    const handleAddToCart = book => {
+        setCart(prevCart => [...prevCart, book]);
+      };
+    
+    //When the cart is clicked it will display the cart page
+    const handleCartClick = () => {
+        setShowCart(!showCart);
+      };
+
+      //removes item from the cart
+      const handleRemoveItem = (itemId) => {
+        setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+      };
+    
+    //displays cart if it was clicked otherwise displays the store page
+    return(
+        <div>
+            {showCart ? (
+                <Cart cart={cart} onClose={() => setShowCart(false)} onRemoveItem={handleRemoveItem} />
+            ) : (
+                <StorePage
+                    books={books}
+                    selectedBook={selectedBook}
+                    onBookClick={handleBookClick}
+                    onAddToCart={handleAddToCart}
+                    onCartClick={handleCartClick}
+                />
+            )}
+        </div>
+    );
+            }
+
+    function StorePage({ books, selectedBook, onBookClick, onAddToCart, onCartClick, showCart, cart }){
     //Displays the title and image component
     //Also displays booklist component
     //Displays the selected book if one is selected
@@ -31,7 +69,7 @@ export default function StorePage(){
             <StoreImage />
             <div className='StoreContent'>
             <div className='BookList'>
-                <BookList books={books} onBookClick={handleBookClick} selectedBook={selectedBook} setSelectedBook={setSelectedBook} />
+                <BookList books={books} onBookClick={onBookClick} selectedBook={selectedBook} setSelectedBook={onBookClick} />
             </div>
             {selectedBook && (
                 <div className='selectedbook'>
@@ -40,12 +78,12 @@ export default function StorePage(){
                     <p>Title: {selectedBook.name}</p>
                     <p>Price: ${selectedBook.price}</p>
                     <p>Description: {selectedBook.description}</p>
-                    <button>Buy Now!</button>
-                </div>
-                
-                
+                    <button onClick={() => onAddToCart(selectedBook)}>Add to Cart!</button>
+                </div>  
             )}
+            {showCart && <Cart cart={cart} />}
             </div>
+            <button onClick={onCartClick} id='cartButton'>View Cart</button>
         </div>
 
     )
@@ -86,7 +124,7 @@ function BookList({ books, onBookClick, selectedBook, setSelectedBook }) {
 
 //Component for each indivdual book in the book list
 //listens for click on book and then passes the selected book back up to the parent StorePage component
-function BookItem({ book, onBookClick, selectedBook, setSelectedBook }){
+function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
     const handleClick = () => {
         onBookClick(book);
         setSelectedBook(book);
@@ -100,4 +138,6 @@ function BookItem({ book, onBookClick, selectedBook, setSelectedBook }){
         </div>
     );
 }
+
+
 
