@@ -73,27 +73,23 @@ export default function Products(){
             <div className='StoreContent'>
             <div className='BookList'>
                 <BookList books={books} onBookClick={onBookClick} selectedBook={selectedBook} setSelectedBook={onBookClick} />
-                <BookList books={books} onBookClick={onBookClick} selectedBook={selectedBook} setSelectedBook={onBookClick} />
             </div>
             {selectedBook && (
                 <div className='selectedbook'>
-                    
                     <h3>Used Book:</h3>
                     <p>Title: {selectedBook.name}</p>
                     <p>Price: ${selectedBook.price}</p>
                     <p>Description: {selectedBook.description}</p>
                     <button onClick={() => onAddToCart(selectedBook)}>Add to Cart!</button>
-                </div>  
-                    <button onClick={() => onAddToCart(selectedBook)}>Add to Cart!</button>
-                </div>  
+                    </div>  
             )}
             {showCart && <Cart cart={cart} />}
-            {showCart && <Cart cart={cart} />}
+            
+            
+            
             </div>
             <button onClick={onCartClick} id='cartButton'>View Cart</button>
-            <button onClick={onCartClick} id='cartButton'>View Cart</button>
         </div>
-
     )
 }
 
@@ -132,7 +128,7 @@ function BookList({ books, onBookClick, selectedBook, setSelectedBook }) {
 
 //Component for each indivdual book in the book list
 //listens for click on book and then passes the selected book back up to the parent StorePage component
-function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
+
 function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
     const handleClick = () => {
         onBookClick(book);
@@ -147,6 +143,7 @@ function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
         </div>
     );
 }
+
 
 
 
