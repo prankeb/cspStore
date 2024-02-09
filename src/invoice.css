@@ -1,0 +1,59 @@
+/* css for invoice */
+.Invoice {
+    
+
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+  
+ 
+  #invoiceHeading{
+    color: black;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #333;
+    color: #000000;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #a2a2a2;
+  }
+
+  tbody tr:nth-child(odd) {
+    color: black;
+  }
+  
+  #total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: black;
+  }
+  
+  #backButton {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+  }

@@ -1,6 +1,10 @@
 
 import { Component } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { selectCartItems } from './storeSlice';
+import { useSelector } from 'react-redux';
+
 
 //Styles from a react libary to style components
 const CartItemContainer = styled.ul`
@@ -23,7 +27,10 @@ const Button = styled.button`
 
 
 //Cart component, its passed the cart list, onClone and onRemoveItem as props
-export default function Cart({ cart, onClose, onRemoveItem}) {
+//Grabs the cart array from the redux store 
+export default function Cart({  onClose, onRemoveItem}) {
+  const cart = useSelector(selectCartItems);
+   
     //Displays title, checks if cart is empty, if not displays the items
     return (
       <div className='Cart'>
@@ -34,6 +41,7 @@ export default function Cart({ cart, onClose, onRemoveItem}) {
         <Items items={cart} onRemoveItem={onRemoveItem} />
         )}
         <CloseButton onClose={onClose} />
+        <BuyProductsButton  />
       </div>
     );
   }
@@ -48,11 +56,23 @@ export default function Cart({ cart, onClose, onRemoveItem}) {
 //Button for closing the cart, when clicked the store page is shown
   function CloseButton( {onClose}) {
     return(
-        <Button>
-            <button  onClick={onClose}>Close Cart</button>
-        </Button>
+        <button  onClick={onClose}>Close Cart</button>
+        
     )
   }
+
+  //when user press the buy button, it will route the user to their invoice
+  function BuyProductsButton() {
+    const navigate = useNavigate();
+
+   const handleBuyProducts = () => {
+    // Navigate to the "/invoice" route
+    navigate('/Invoice');
+    };
+    return (
+      <button onClick={handleBuyProducts}>Buy Products!</button>
+    );
+}
 
   //Component for showing the item list in the cart
   class Items extends Component {

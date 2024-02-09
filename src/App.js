@@ -3,15 +3,30 @@ import './App.css';
 import Header from './Header';
 import LoginPage from './LoginPage';
 import Products from './StorePage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Cart from './Cart';
+import Invoice from './Invoice';
+import { Provider} from 'react-redux';
+import store from './store';
 
 
 //the main Component displays the header and then the main page
+//Wraps it in the redux store allows all components access to cart data 
+//Adds routes to homepage, cart, and to the invoice page
 function App(){
     return (
+        <Provider store={store}>
+        <Router>
         <div className='App'>
-            <Header />
-            <MainPage />
+        <Header />
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/Invoice" element={<Invoice />} />
+            </Routes>
         </div>
+        </Router>
+        </Provider>
     )
 }
 

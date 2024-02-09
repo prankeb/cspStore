@@ -1,14 +1,17 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Cart from './Cart';
+import { addItem, removeItem } from './storeSlice';
 
 //Main function is for displaying products
 export default function Products(){
+    const dispatch = useDispatch();
     const [books, setBooks] = useState([]);
     //Selected book starts out null
     const [selectedBook, setSelectedBook] = useState(null);
     //Variables for the cart as a list and the usestate for showing the cart page
-    const [cart, setCart] = useState([]);
+    const cart = useSelector(state => state.cart);
     const [showCart, setShowCart] = useState(false);
 
     //Fetches the json file with book data
@@ -28,7 +31,7 @@ export default function Products(){
 
     //adds book to cart and includes books that were already in the cart
     const handleAddToCart = book => {
-        setCart(prevCart => [...prevCart, book]);
+        dispatch(addItem(book));
       };
     
     //When the cart is clicked it will display the cart page
@@ -38,7 +41,7 @@ export default function Products(){
 
       //removes item from the cart
       const handleRemoveItem = (itemId) => {
-        setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+        dispatch(removeItem(itemId));
       };
     
     //displays cart if it was clicked otherwise displays the store page
@@ -70,6 +73,7 @@ export default function Products(){
             <div className='StoreContent'>
             <div className='BookList'>
                 <BookList books={books} onBookClick={onBookClick} selectedBook={selectedBook} setSelectedBook={onBookClick} />
+                <BookList books={books} onBookClick={onBookClick} selectedBook={selectedBook} setSelectedBook={onBookClick} />
             </div>
             {selectedBook && (
                 <div className='selectedbook'>
@@ -80,9 +84,13 @@ export default function Products(){
                     <p>Description: {selectedBook.description}</p>
                     <button onClick={() => onAddToCart(selectedBook)}>Add to Cart!</button>
                 </div>  
+                    <button onClick={() => onAddToCart(selectedBook)}>Add to Cart!</button>
+                </div>  
             )}
             {showCart && <Cart cart={cart} />}
+            {showCart && <Cart cart={cart} />}
             </div>
+            <button onClick={onCartClick} id='cartButton'>View Cart</button>
             <button onClick={onCartClick} id='cartButton'>View Cart</button>
         </div>
 
@@ -125,6 +133,7 @@ function BookList({ books, onBookClick, selectedBook, setSelectedBook }) {
 //Component for each indivdual book in the book list
 //listens for click on book and then passes the selected book back up to the parent StorePage component
 function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
+function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
     const handleClick = () => {
         onBookClick(book);
         setSelectedBook(book);
@@ -138,6 +147,8 @@ function BookItem({ book, onBookClick, selectedBook, setSelectedBook, }){
         </div>
     );
 }
+
+
 
 
 
