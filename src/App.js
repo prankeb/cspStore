@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from './Header';
 import LoginPage from './LoginPage';
+import Register from './Register';
 import Products from './StorePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cart from './Cart';
 import Invoice from './Invoice';
 import { Provider} from 'react-redux';
 import store from './store';
+
+
+
 
 
 //the main Component displays the header and then the main page
@@ -22,7 +26,8 @@ function App(){
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/Invoice" element={<Invoice />} />
+                <Route path="/invoice" element={<Invoice />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
         </div>
         </Router>
@@ -35,11 +40,13 @@ function App(){
 //Otherwise displays the main store page
 function MainPage(){
     //User is started logged out
+    const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     //User is logged in once they click the button
-    const handleLoginSubmit = () => {
-        setIsLoggedIn(true);
+    const handleLoginSubmit = (userData) => {
+        setUser(userData.user);
+        setIsLoggedIn(true)
       };
     
       //Returns store page if logged in 
