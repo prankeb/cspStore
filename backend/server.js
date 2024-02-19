@@ -10,6 +10,10 @@ app.use(cors());
 //Uses express to give data to the client in json format
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, '..', 'build')));
+
+
+
 // Route for connecting to the database
 app.get('/', async (req, res) => {
   //connects to the database
