@@ -3,7 +3,7 @@ const { MongoClient } = require("mongodb");
 //function for connecting to the database
  async function connect () {
   //database connection
-  const url = 'mongodb://localhost:27017/applicationdb';
+  const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/applicationdb';
 
   //variable for the db
   let client;

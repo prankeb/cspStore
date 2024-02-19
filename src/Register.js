@@ -36,7 +36,7 @@ function RegisterForm(){
     
         try {
           // Make an HTTP request to the server's register
-          const response = await fetch('http://localhost:5000/register', {
+          const response = await fetch('https://pranke-cspstore-a6013b217d74.herokuapp.com/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

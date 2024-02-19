@@ -15,7 +15,7 @@ export default function LoginPage({ onLoginSubmit }) {
 
     try {
       // Make an HTTP request to the server's login
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch('https://pranke-cspstore-a6013b217d74.herokuapp.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
