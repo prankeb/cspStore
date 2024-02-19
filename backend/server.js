@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { connect, addUser, loginUser } = require('./db'); 
 const app = express();
 const cors = require('cors');
