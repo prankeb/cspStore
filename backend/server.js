@@ -13,11 +13,11 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static('../public'));
+  app.use(express.static('../build'));
 
   // Serve the React app
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
   });
 }
 
