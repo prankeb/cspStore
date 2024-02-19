@@ -11,12 +11,21 @@ app.use(cors());
 //Uses express to give data to the client in json format
 app.use(express.json());
 
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('../build'));
+
+  // Serve the React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+  });
+}
 
 
 
 
 // Route for connecting to the database
-app.get('/', async (req, res) => {
+app.get('/connect', async (req, res) => {
   //connects to the database
   try {
     const client = await connect();
