@@ -10,7 +10,7 @@ app.use(cors());
 //Uses express to give data to the client in json format
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
+
 
 
 
@@ -56,7 +56,11 @@ app.post('/register', async (req, res) => {
       res.status(401).json({ error: 'Invalid credentials' });
     }
   });
+
+  app.use(express.static(path.join(__dirname, '..', 'build')));
   
   app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
   });
+
+ 
