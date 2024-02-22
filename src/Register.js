@@ -93,7 +93,7 @@ function Password({ setPassword }){
   //Component for Submit button input
 function Button() {
     return(
-      <button type='submit'>Register</button>
+      <button type='submit'>Register Account</button>
     )
   }
 

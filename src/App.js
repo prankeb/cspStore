@@ -4,7 +4,7 @@ import Header from './Header';
 import LoginPage from './LoginPage';
 import Register from './Register';
 import Products from './StorePage';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Cart from './Cart';
 import Invoice from './Invoice';
 import { Provider} from 'react-redux';
@@ -20,7 +20,6 @@ import store from './store';
 function App(){
     return (
         <Provider store={store}>
-        <Router>
         <div className='App'>
         <Header />
             <Routes>
@@ -30,7 +29,6 @@ function App(){
                 <Route path="/register" element={<Register />} />
             </Routes>
         </div>
-        </Router>
         </Provider>
     )
 }
