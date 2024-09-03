@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from './Header';
-import LoginPage from './LoginPage';
-import Register from './Register';
-import Products from './StorePage';
+import Header from './Components/Header';
+import LoginPage from './Components/LoginPage';
+import Register from './Components/Register';
+import Products from './Components/StorePage';
 import { Route, Routes } from 'react-router-dom';
-import Cart from './Cart';
-import Invoice from './Invoice';
+import Cart from './Components/Cart';
+import Invoice from './Components/Invoice';
 import { Provider} from 'react-redux';
-import store from './store';
+import store from './Stores/store';
 
 
 

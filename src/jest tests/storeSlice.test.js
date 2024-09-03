@@ -1,4 +1,4 @@
-import cartReducer, { addItem, removeItem, clearCart, selectCartItems } from '../storeSlice';
+import cartReducer, { addItem, removeItem, clearCart, selectCartItems } from '../Stores/storeSlice';
 
 //Test for adding item to cart reducer
 describe('Cart Reducer', () => {
